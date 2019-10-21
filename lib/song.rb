@@ -7,7 +7,7 @@ class Song
   @@songs = []
 
   def initialize
-    @@songs << self
+    self.class.all << self
   end
 
   def self.find_by_name(name)
@@ -22,7 +22,10 @@ class Song
     @artist = artist
   end
 
-  def to_param
-    name.downcase.gsub(' ', '-')
-  end
+  #def to_param
+   # name.downcase.gsub(' ', '-')
+  #end
 end
+
+extend Memorable::ClassMethods
+include Memorable::InstanceMethods
