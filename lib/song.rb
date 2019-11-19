@@ -1,6 +1,11 @@
 require 'pry'
+require_relative '../config/enviroment'
 
 class Song
+  extend Memorable::ClassMethods
+  extend Findable
+  include Memorable::InstanceMethods
+  include Paramble
   attr_accessor :name
   attr_reader :artist
 
@@ -33,4 +38,5 @@ class Song
   def to_param
     name.downcase.gsub(' ', '-')
   end
+
 end
